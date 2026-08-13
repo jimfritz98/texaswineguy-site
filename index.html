@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Texas Wine Guy — Coming Soon</title>
+<meta name="description" content="Texas Wine Guy — your guide to the Texas Hill Country wine trail. Launching soon.">
+
+<!-- ============================================================= -->
+<!--  EASY TO EDIT LATER:                                          -->
+<!--  1. TAGLINE: search for "tagline" below and change the text.  -->
+<!--  2. When you're ready to launch the real site, just replace   -->
+<!--     this whole file and push to GitHub — Vercel redeploys it.  -->
+<!-- ============================================================= -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,500;1,9..144,600&family=Archivo:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --wine-deep:#22070E;
+    --wine:#3B1320;
+    --wine-mid:#551A2B;
+    --amber:#E0A85A;
+    --amber-glow:#F4CE8A;
+    --cream:#F1E7D4;
+    --cream-dim:rgba(241,231,212,.62);
+    --sage:#98A07B;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+
+  html,body{height:100%;}
+
+  body{
+    font-family:"Archivo",system-ui,sans-serif;
+    background:var(--wine-deep);
+    color:var(--cream);
+    min-height:100dvh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    position:relative;
+    overflow:hidden;
+    padding:2rem 1.5rem;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  /* golden-hour horizon wash behind everything */
+  body::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:
+      radial-gradient(120% 90% at 50% 118%, rgba(224,168,90,.42) 0%, rgba(224,168,90,.10) 34%, rgba(224,168,90,0) 58%),
+      linear-gradient(180deg, var(--wine-deep) 0%, var(--wine) 46%, var(--wine-mid) 100%);
+    z-index:0;
+  }
+
+  /* rolling Hill Country ridgelines at the bottom — the signature */
+  .hills{
+    position:absolute;
+    left:0;right:0;bottom:0;
+    width:100%;
+    z-index:1;
+    pointer-events:none;
+    line-height:0;
+  }
+  .hills svg{width:100%;height:auto;display:block;}
+
+  main{
+    position:relative;
+    z-index:2;
+    max-width:640px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:1.5rem;
+  }
+
+  .eyebrow{
+    font-size:.72rem;
+    letter-spacing:.42em;
+    text-transform:uppercase;
+    font-weight:600;
+    color:var(--amber);
+    padding-left:.42em; /* optical: balance the trailing letter-spacing */
+  }
+
+  .wordmark{
+    font-family:"Fraunces",Georgia,serif;
+    font-weight:600;
+    line-height:.94;
+    letter-spacing:-.01em;
+    font-size:clamp(3rem,13vw,6.25rem);
+    text-wrap:balance;
+  }
+  .wordmark .accent{
+    font-style:italic;
+    font-weight:500;
+    color:var(--amber);
+  }
+
+  .tagline{
+    font-size:clamp(1.02rem,2.4vw,1.28rem);
+    line-height:1.55;
+    color:var(--cream-dim);
+    max-width:34ch;
+    font-weight:400;
+  }
+
+  .rule{
+    width:44px;height:1px;
+    background:linear-gradient(90deg,transparent,var(--amber),transparent);
+    opacity:.7;
+    margin:.25rem 0;
+  }
+
+  .status{
+    font-family:"Fraunces",Georgia,serif;
+    font-style:italic;
+    font-size:clamp(1rem,2.3vw,1.18rem);
+    color:var(--cream);
+    max-width:32ch;
+  }
+
+  /* entrance */
+  @media (prefers-reduced-motion:no-preference){
+    main > *{opacity:0;transform:translateY(14px);animation:rise .9s cubic-bezier(.2,.7,.2,1) forwards;}
+    main > *:nth-child(1){animation-delay:.05s;}
+    main > *:nth-child(2){animation-delay:.15s;}
+    main > *:nth-child(3){animation-delay:.28s;}
+    main > *:nth-child(4){animation-delay:.4s;}
+    main > *:nth-child(5){animation-delay:.5s;}
+    main > *:nth-child(6){animation-delay:.6s;}
+    @keyframes rise{to{opacity:1;transform:none;}}
+  }
+</style>
+</head>
+<body>
+
+  <main>
+    <p class="eyebrow">Texas Hill Country</p>
+
+    <h1 class="wordmark">Texas <span class="accent">Wine</span> Guy</h1>
+
+    <!-- tagline -->
+    <p class="tagline">Your guide to the Hill Country wine trail — the pours worth stopping for, the folks behind the bar, and how to plan the perfect day out.</p>
+
+    <div class="rule"></div>
+
+    <p class="status">Something good is aging in the barrel. Launching soon.</p>
+  </main>
+
+  <div class="hills" aria-hidden="true">
+    <svg viewBox="0 0 1440 320" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path fill="#551A2B" fill-opacity="0.55" d="M0,224 C180,180 320,260 520,232 C760,198 900,150 1120,196 C1280,230 1380,250 1440,240 L1440,320 L0,320 Z"/>
+      <path fill="#3B1320" fill-opacity="0.85" d="M0,268 C200,238 340,296 560,272 C820,244 980,214 1200,256 C1320,278 1400,288 1440,282 L1440,320 L0,320 Z"/>
+      <path fill="#22070E" d="M0,300 C220,286 420,312 660,300 C900,288 1060,272 1280,296 C1360,304 1410,308 1440,306 L1440,320 L0,320 Z"/>
+    </svg>
+  </div>
+
+</body>
+</html>
