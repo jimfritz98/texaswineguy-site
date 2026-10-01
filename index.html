@@ -25,19 +25,18 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500&family=Outfit:wght@600;700;800&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
 
 <style>
   :root{
-    --wine-red:#7A0000;     /* brand red — TEXAS / GUY */
-    --gold:#CCA300;         /* brand gold — WINE */
-    --gold-deep:#A9820A;    /* gold that reads on cream */
-    --wine:#3B1320;         /* deep wine, darkest ink */
-    --espresso:#4A2A22;     /* warm brown body ink */
-    --amber:#E0A85A;        /* golden-hour light */
-    --cream:#F8F1E4;        /* limestone — top of page */
-    --cream-warm:#F1E2C6;   /* warmer light — golden hour, bottom */
-    --sage:#97A07B;
+    /* Brand palette — same tokens as the app (texaswineguy-app CLAUDE.md) */
+    --wine:#3B1320;         /* body text, darkest ink */
+    --brand-red:#7A0000;    /* headings, labels (TEXAS / GUY) */
+    --brand-gold:#CCA300;   /* fills, borders, decoration ONLY — never text */
+    --cream:#F1E7D4;        /* page background */
+    --cream-light:#F7F0E3;  /* raised / lighter surfaces */
+    --sage:#97A07B;         /* supporting */
+    --gold-glow:204,163,0;  /* brand gold as rgb, for soft light washes */
   }
 
   *{margin:0;padding:0;box-sizing:border-box;}
@@ -45,8 +44,8 @@
   html{color-scheme:light;}
 
   body{
-    font-family:"Jost",system-ui,-apple-system,sans-serif;
-    color:var(--espresso);
+    font-family:"Plus Jakarta Sans",system-ui,-apple-system,sans-serif;
+    color:var(--wine);
     background:var(--cream);
     min-height:100dvh;
     display:flex;
@@ -68,8 +67,8 @@
     z-index:0;
     pointer-events:none;
     background:
-      radial-gradient(140% 95% at 50% 120%, rgba(224,168,90,.55) 0%, rgba(224,168,90,.16) 38%, rgba(224,168,90,0) 64%),
-      linear-gradient(180deg, var(--cream) 0%, #F6ECD9 52%, var(--cream-warm) 100%);
+      radial-gradient(140% 95% at 50% 120%, rgba(var(--gold-glow),.30) 0%, rgba(var(--gold-glow),.10) 38%, rgba(var(--gold-glow),0) 64%),
+      linear-gradient(180deg, var(--cream-light) 0%, var(--cream) 100%);
   }
 
   /* soft rolling ridgelines at the very bottom — Hill Country, kept light */
@@ -102,12 +101,12 @@
     align-items:center;
     justify-content:center;
   }
-  .hero::before{  /* amber halo behind the badge */
+  .hero::before{  /* soft gold halo behind the badge */
     content:"";
     position:absolute;
     inset:-8%;
     border-radius:50%;
-    background:radial-gradient(circle, rgba(224,168,90,.5) 0%, rgba(224,168,90,.14) 46%, rgba(224,168,90,0) 70%);
+    background:radial-gradient(circle, rgba(var(--gold-glow),.30) 0%, rgba(var(--gold-glow),.10) 46%, rgba(var(--gold-glow),0) 70%);
     z-index:0;
   }
   .hero img{
@@ -119,33 +118,34 @@
   }
 
   .eyebrow{
-    font-size:.72rem;
-    letter-spacing:.44em;
+    font-family:"Oswald",system-ui,sans-serif;
+    font-size:.95rem;
+    letter-spacing:.3em;
     text-transform:uppercase;
     font-weight:500;
-    color:var(--wine-red);
+    color:var(--brand-red);
     padding-left:.44em;
   }
 
   .tagline{
     font-size:clamp(1.04rem,2.5vw,1.3rem);
     line-height:1.6;
-    color:var(--espresso);
+    color:var(--wine);
     max-width:33ch;
     font-weight:400;
   }
 
   .rule{
     width:48px;height:2px;border-radius:2px;
-    background:linear-gradient(90deg,transparent,var(--gold),transparent);
+    background:linear-gradient(90deg,transparent,var(--brand-gold),transparent);
     opacity:.85;
   }
 
   .status{
-    font-style:italic;
-    font-weight:400;
+    font-family:"Outfit",system-ui,sans-serif;
+    font-weight:700;
     font-size:clamp(1rem,2.3vw,1.16rem);
-    color:var(--wine);
+    color:var(--brand-red);
     max-width:30ch;
   }
 
@@ -165,12 +165,15 @@
     opacity:.92;
   }
   footer .loc{
-    font-size:.64rem;
-    letter-spacing:.34em;
+    font-family:"Oswald",system-ui,sans-serif;
+    font-size:.8rem;
+    letter-spacing:.3em;
     text-transform:uppercase;
-    color:var(--gold-deep);
+    color:var(--brand-red);
     font-weight:500;
   }
+
+  footer .star{color:var(--brand-gold);}
 
   /* entrance */
   @media (prefers-reduced-motion:no-preference){
@@ -204,12 +207,12 @@
 
   <footer>
     <img src="./wordmark.svg" alt="Texas Wine Guy™">
-    <span class="loc">★ Est. 2026 ★</span>
+    <span class="loc"><span class="star" aria-hidden="true">★</span> Est. 2026 <span class="star" aria-hidden="true">★</span></span>
   </footer>
 
   <div class="hills" aria-hidden="true">
     <svg viewBox="0 0 1440 220" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-      <path fill="#C9A66B" fill-opacity="0.30" d="M0,150 C200,110 360,168 560,146 C800,120 960,92 1200,132 C1320,152 1400,160 1440,156 L1440,220 L0,220 Z"/>
+      <path fill="#CCA300" fill-opacity="0.18" d="M0,150 C200,110 360,168 560,146 C800,120 960,92 1200,132 C1320,152 1400,160 1440,156 L1440,220 L0,220 Z"/>
       <path fill="#97A07B" fill-opacity="0.34" d="M0,180 C220,156 380,200 600,182 C840,162 1000,150 1220,182 C1330,198 1400,202 1440,200 L1440,220 L0,220 Z"/>
     </svg>
   </div>
