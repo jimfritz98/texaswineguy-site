@@ -3,65 +3,78 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Texas Wine Guy — Coming Soon</title>
+<title>Texas Wine Guy</title>
 <meta name="description" content="Texas Wine Guy — your guide to the Texas Hill Country wine trail. Launching soon.">
 
 <!-- ============================================================= -->
-<!--  EASY TO EDIT LATER:                                          -->
-<!--  1. TAGLINE: search for "tagline" below and change the text.  -->
-<!--  2. When you're ready to launch the real site, just replace   -->
-<!--     this whole file and push to GitHub — Vercel redeploys it.  -->
+<!--  TEXAS WINE GUY — coming soon                                 -->
+<!--  Assets (keep alongside this file): badge.png, wordmark.svg,  -->
+<!--  apple-touch-icon.png                                         -->
+<!--  To change the tagline: search "TAGLINE" below.               -->
 <!-- ============================================================= -->
+
+<link rel="icon" type="image/png" href="./apple-touch-icon.png">
+<link rel="apple-touch-icon" href="./apple-touch-icon.png">
+
+<!-- social share -->
+<meta property="og:title" content="Texas Wine Guy">
+<meta property="og:description" content="Your guide to the Texas Hill Country wine trail. Launching soon.">
+<meta property="og:image" content="./badge.png">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,500;1,9..144,600&family=Archivo:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
 
 <style>
   :root{
-    --wine-deep:#22070E;
-    --wine:#3B1320;
-    --wine-mid:#551A2B;
-    --amber:#E0A85A;
-    --amber-glow:#F4CE8A;
-    --cream:#F1E7D4;
-    --cream-dim:rgba(241,231,212,.62);
-    --sage:#98A07B;
+    --wine-red:#7A0000;     /* brand red — TEXAS / GUY */
+    --gold:#CCA300;         /* brand gold — WINE */
+    --gold-deep:#A9820A;    /* gold that reads on cream */
+    --wine:#3B1320;         /* deep wine, darkest ink */
+    --espresso:#4A2A22;     /* warm brown body ink */
+    --amber:#E0A85A;        /* golden-hour light */
+    --cream:#F8F1E4;        /* limestone — top of page */
+    --cream-warm:#F1E2C6;   /* warmer light — golden hour, bottom */
+    --sage:#97A07B;
   }
 
   *{margin:0;padding:0;box-sizing:border-box;}
-
   html,body{height:100%;}
+  html{color-scheme:light;}
 
   body{
-    font-family:"Archivo",system-ui,sans-serif;
-    background:var(--wine-deep);
-    color:var(--cream);
+    font-family:"Jost",system-ui,-apple-system,sans-serif;
+    color:var(--espresso);
+    background:var(--cream);
     min-height:100dvh;
     display:flex;
+    flex-direction:column;
     align-items:center;
     justify-content:center;
     text-align:center;
     position:relative;
-    overflow:hidden;
-    padding:2rem 1.5rem;
+    overflow-x:hidden;
+    padding:3rem 1.5rem 2rem;
     -webkit-font-smoothing:antialiased;
   }
 
-  /* golden-hour horizon wash behind everything */
+  /* golden-hour wash — warm light rising from below */
   body::before{
     content:"";
-    position:absolute;
+    position:fixed;
     inset:0;
-    background:
-      radial-gradient(120% 90% at 50% 118%, rgba(224,168,90,.42) 0%, rgba(224,168,90,.10) 34%, rgba(224,168,90,0) 58%),
-      linear-gradient(180deg, var(--wine-deep) 0%, var(--wine) 46%, var(--wine-mid) 100%);
     z-index:0;
+    pointer-events:none;
+    background:
+      radial-gradient(140% 95% at 50% 120%, rgba(224,168,90,.55) 0%, rgba(224,168,90,.16) 38%, rgba(224,168,90,0) 64%),
+      linear-gradient(180deg, var(--cream) 0%, #F6ECD9 52%, var(--cream-warm) 100%);
   }
 
-  /* rolling Hill Country ridgelines at the bottom — the signature */
+  /* soft rolling ridgelines at the very bottom — Hill Country, kept light */
   .hills{
-    position:absolute;
+    position:fixed;
     left:0;right:0;bottom:0;
     width:100%;
     z-index:1;
@@ -73,68 +86,101 @@
   main{
     position:relative;
     z-index:2;
-    max-width:640px;
+    max-width:600px;
     display:flex;
     flex-direction:column;
     align-items:center;
-    gap:1.5rem;
+    gap:1.6rem;
+  }
+
+  /* ---- badge hero ---- */
+  .hero{
+    position:relative;
+    width:clamp(230px, 58vw, 400px);
+    aspect-ratio:1/1;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .hero::before{  /* amber halo behind the badge */
+    content:"";
+    position:absolute;
+    inset:-8%;
+    border-radius:50%;
+    background:radial-gradient(circle, rgba(224,168,90,.5) 0%, rgba(224,168,90,.14) 46%, rgba(224,168,90,0) 70%);
+    z-index:0;
+  }
+  .hero img{
+    position:relative;
+    z-index:1;
+    width:100%;
+    height:auto;
+    filter:drop-shadow(0 16px 34px rgba(59,19,32,.26));
   }
 
   .eyebrow{
     font-size:.72rem;
-    letter-spacing:.42em;
+    letter-spacing:.44em;
     text-transform:uppercase;
-    font-weight:600;
-    color:var(--amber);
-    padding-left:.42em; /* optical: balance the trailing letter-spacing */
-  }
-
-  .wordmark{
-    font-family:"Fraunces",Georgia,serif;
-    font-weight:600;
-    line-height:.94;
-    letter-spacing:-.01em;
-    font-size:clamp(3rem,13vw,6.25rem);
-    text-wrap:balance;
-  }
-  .wordmark .accent{
-    font-style:italic;
     font-weight:500;
-    color:var(--amber);
+    color:var(--wine-red);
+    padding-left:.44em;
   }
 
   .tagline{
-    font-size:clamp(1.02rem,2.4vw,1.28rem);
-    line-height:1.55;
-    color:var(--cream-dim);
-    max-width:34ch;
+    font-size:clamp(1.04rem,2.5vw,1.3rem);
+    line-height:1.6;
+    color:var(--espresso);
+    max-width:33ch;
     font-weight:400;
   }
 
   .rule{
-    width:44px;height:1px;
-    background:linear-gradient(90deg,transparent,var(--amber),transparent);
-    opacity:.7;
-    margin:.25rem 0;
+    width:48px;height:2px;border-radius:2px;
+    background:linear-gradient(90deg,transparent,var(--gold),transparent);
+    opacity:.85;
   }
 
   .status{
-    font-family:"Fraunces",Georgia,serif;
     font-style:italic;
-    font-size:clamp(1rem,2.3vw,1.18rem);
-    color:var(--cream);
-    max-width:32ch;
+    font-weight:400;
+    font-size:clamp(1rem,2.3vw,1.16rem);
+    color:var(--wine);
+    max-width:30ch;
+  }
+
+  /* ---- footer sign-off ---- */
+  footer{
+    position:relative;
+    z-index:2;
+    margin-top:1.4rem;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:.7rem;
+  }
+  footer img{
+    width:clamp(150px, 34vw, 210px);
+    height:auto;
+    opacity:.92;
+  }
+  footer .loc{
+    font-size:.64rem;
+    letter-spacing:.34em;
+    text-transform:uppercase;
+    color:var(--gold-deep);
+    font-weight:500;
   }
 
   /* entrance */
   @media (prefers-reduced-motion:no-preference){
-    main > *{opacity:0;transform:translateY(14px);animation:rise .9s cubic-bezier(.2,.7,.2,1) forwards;}
-    main > *:nth-child(1){animation-delay:.05s;}
-    main > *:nth-child(2){animation-delay:.15s;}
-    main > *:nth-child(3){animation-delay:.28s;}
-    main > *:nth-child(4){animation-delay:.4s;}
-    main > *:nth-child(5){animation-delay:.5s;}
-    main > *:nth-child(6){animation-delay:.6s;}
+    main > *, footer{opacity:0;transform:translateY(16px);animation:rise .95s cubic-bezier(.2,.7,.2,1) forwards;}
+    .hero{animation-delay:.05s;}
+    main > .eyebrow{animation-delay:.22s;}
+    main > .tagline{animation-delay:.34s;}
+    main > .rule{animation-delay:.44s;}
+    main > .status{animation-delay:.52s;}
+    footer{animation-delay:.66s;}
     @keyframes rise{to{opacity:1;transform:none;}}
   }
 </style>
@@ -142,11 +188,13 @@
 <body>
 
   <main>
+    <div class="hero">
+      <img src="./badge.png" alt="Texas Wine Guy — illustrated badge logo" width="900" height="900">
+    </div>
+
     <p class="eyebrow">Texas Hill Country</p>
 
-    <h1 class="wordmark">Texas <span class="accent">Wine</span> Guy</h1>
-
-    <!-- tagline -->
+    <!-- TAGLINE -->
     <p class="tagline">Your guide to the Hill Country wine trail — the pours worth stopping for, the folks behind the bar, and how to plan the perfect day out.</p>
 
     <div class="rule"></div>
@@ -154,11 +202,15 @@
     <p class="status">Something good is aging in the barrel. Launching soon.</p>
   </main>
 
+  <footer>
+    <img src="./wordmark.svg" alt="Texas Wine Guy">
+    <span class="loc">★ Est. 2026 ★</span>
+  </footer>
+
   <div class="hills" aria-hidden="true">
-    <svg viewBox="0 0 1440 320" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-      <path fill="#551A2B" fill-opacity="0.55" d="M0,224 C180,180 320,260 520,232 C760,198 900,150 1120,196 C1280,230 1380,250 1440,240 L1440,320 L0,320 Z"/>
-      <path fill="#3B1320" fill-opacity="0.85" d="M0,268 C200,238 340,296 560,272 C820,244 980,214 1200,256 C1320,278 1400,288 1440,282 L1440,320 L0,320 Z"/>
-      <path fill="#22070E" d="M0,300 C220,286 420,312 660,300 C900,288 1060,272 1280,296 C1360,304 1410,308 1440,306 L1440,320 L0,320 Z"/>
+    <svg viewBox="0 0 1440 220" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path fill="#C9A66B" fill-opacity="0.30" d="M0,150 C200,110 360,168 560,146 C800,120 960,92 1200,132 C1320,152 1400,160 1440,156 L1440,220 L0,220 Z"/>
+      <path fill="#97A07B" fill-opacity="0.34" d="M0,180 C220,156 380,200 600,182 C840,162 1000,150 1220,182 C1330,198 1400,202 1440,200 L1440,220 L0,220 Z"/>
     </svg>
   </div>
 
